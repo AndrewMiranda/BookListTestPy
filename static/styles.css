@@ -1,0 +1,42 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.libros-lista {
+    list-style: none;
+    padding: 0;
+    align-self: center;
+}
+
+.libro-info {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #666;
+    margin: 0;
+}

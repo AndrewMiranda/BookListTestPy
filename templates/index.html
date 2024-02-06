@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Libros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='responsive.css') }}">    
+</head>
+<body>
+<!-- Encabezado -->
+<header>
+    <div class="header-container">
+        <div class="logo-nombre">
+            <img src="{{ url_for('static', filename='libros.png') }}" alt="Logo" class="logo">
+            <h1>Mi librería de prueba</h1>
+        </div>
+        <div class="boton-login">
+            <button onclick="alert('Botón de Logueo presionado')">
+                <span class="icono-persona">&#128100;</span> Iniciar Sesión
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- CONTAINER -->
+<div class="container">
+    <h1>Lista de Libros</h1>
+
+    <!-- Controles de Filtro y Ordenación -->
+    <div class="filtro-ordenacion">
+        <form method="get">
+            <label for="filtro">Filtrar por Autor:</label>
+            <select id="filtro" name="filtro" onchange="this.form.submit()">
+                <option value="" {% if not filtro_autor %}selected{% endif %}>Todos</option>
+                <option value="J.R.R. Tolkien" {% if filtro_autor == 'J.R.R. Tolkien' %}selected{% endif %}>J.R.R. Tolkien</option>
+                <option value="George Orwell" {% if filtro_autor == 'George Orwell' %}selected{% endif %}>George Orwell</option>
+                <option value="Gabriel García Márquez" {% if filtro_autor == 'Gabriel García Márquez' %}selected{% endif %}>Gabriel García Márquez</option>
+            </select>
+        </form>
+    </div>
+
+    <ul class="libros-lista">
+        {% for libro in libros %}
+            <li>
+                <div class="libro-info">
+                    <img src="{{ libro.imagen }}" alt="{{ libro.titulo }}" class="libro-imagen">
+                    <h2>{{ libro.titulo }}</h2>
+                    <p>Por {{ libro.autor }}, Publicado en {{ libro.publicacion }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- END CONTAINER -->
+
+
+</body>
+</html>
